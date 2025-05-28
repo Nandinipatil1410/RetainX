@@ -5,7 +5,7 @@ from flask_cors import CORS
 import joblib
 
 app = Flask(__name__)
-CORS(app)
+CORS(app, resources={r"/*": {"origins": "*"}})
 
 # Load the trained model
 model = joblib.load('churn_model.pkl')
@@ -34,7 +34,11 @@ encoder = joblib.load("encoders.pkl")
 def predict():
     try:
         data = request.get_json()
-        print("Received data:", data)  # Log input
+        print("🔵 Received data:", data)
+
+        if not data:
+            print("🔴 No data received or not JSON")
+            return jsonify({'error': 'No data received'}), 400
 
         df = pd.DataFrame([data])
 

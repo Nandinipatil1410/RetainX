@@ -72,23 +72,27 @@ function ChurnForm() {
 
 const handleSubmit = async (e) => {
   e.preventDefault();
+  if (!validateForm()) return;
+
   console.log("Form submitted", formData);
-  
-  if (!validateForm()) {
-    console.log("Validation failed");
-    return;
-  }
 
   try {
-    const response = await axios.post(`${process.env.REACT_APP_API_URL}/predict`, formData);
+    const response = await axios.post(
+      "https://your-backend-url.onrender.com/predict",  // ✅ Use correct deployed URL
+      formData,
+      {
+        headers: {
+          "Content-Type": "application/json"
+        }
+      }
+    );
     console.log("API response:", response.data);
     setResult(response.data);
   } catch (err) {
-    console.error("API error:", err);
+    console.error("Error calling API:", err);
     setError("Prediction failed. Please try again.");
   }
 };
-
 
 
   const nextStep = () => setStep((prev) => Math.min(prev + 1, totalSteps));

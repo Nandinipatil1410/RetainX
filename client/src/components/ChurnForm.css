@@ -1,0 +1,158 @@
+/* Container */
+.form-container {
+  max-width: 500px;
+  margin: 40px auto 60px;
+  background: #ffffff;
+  padding: 30px 40px;
+  border-radius: 15px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+  font-family: Arial, sans-serif;
+}
+
+/* Title */
+.form-container h2 {
+  text-align: center;
+  color: #3a0ca3;
+  margin-bottom: 25px;
+  font-weight: 700;
+  font-size: 28px;
+  letter-spacing: 1.5px;
+}
+
+/* Progress Bar */
+.progress-bar {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 25px;
+  padding: 0 15px;
+  height: 30px;
+  align-items: center;
+}
+
+.progress-bar::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 15px;
+  right: 15px;
+  height: 4px;
+  background: #ddd; /* light gray background line */
+  transform: translateY(-50%);
+  border-radius: 2px;
+  z-index: 0;
+}
+
+.progress-bar__progress {
+  position: absolute;
+  top: 50%;
+  left: 15px;
+  height: 4px;
+  background: #3a0ca3; /* colored progress line */
+  transform: translateY(-50%);
+  border-radius: 2px;
+  z-index: 1;
+  transition: width 0.3s ease;
+}
+
+.progress-step {
+  position: relative;
+  z-index: 2;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background: #ddd;
+  color: #666;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: bold;
+  transition: background-color 0.3s ease;
+  user-select: none;
+}
+
+.progress-step.active {
+  background: #3a0ca3;
+  color: white;
+}
+
+/* Form Steps */
+.form-step {
+  animation: fadeIn 0.5s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateX(20px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+
+/* Labels */
+label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: 600;
+  color: #333;
+  margin-top: 15px;
+}
+
+/* Inputs and Selects */
+input[type="number"],
+select {
+  width: 100%;
+  padding: 9px 12px;
+  border: 2px solid #ddd;
+  border-radius: 8px;
+  font-size: 16px;
+  transition: border-color 0.3s ease;
+}
+
+input[type="number"]:focus,
+select:focus {
+  border-color: #3a0ca3;
+  outline: none;
+}
+
+/* Navigation Buttons */
+.navigation-buttons {
+  margin-top: 30px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.navigation-buttons button {
+  background: #3a0ca3;
+  border: none;
+  color: white;
+  padding: 12px 28px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 700;
+  font-size: 16px;
+  letter-spacing: 0.6px;
+  transition: background-color 0.3s ease;
+}
+
+.navigation-buttons button:hover {
+  background: #5f3dc4;
+}
+
+/* Error message */
+.error {
+  color: #e63946;
+  margin-top: 20px;
+  font-weight: 600;
+  text-align: center;
+}
+
+/* Result Box */
+.result {
+  margin-top: 30px;
+  padding: 20px;
+  border-radius: 10px;
+  background: #f0f0ff;
+  border: 1.5px solid #3a0ca3;
+  color: #3a0ca3;
+  text-align: center;
+  font-weight: 700;
+  font-size: 18px;
+}

@@ -75,12 +75,16 @@ function ChurnForm() {
     if (!validateForm()) return;
 
     try {
-      const response = await axios.post("http://localhost:5000/predict", formData);
+      const response = await axios.post(
+        `${process.env.REACT_APP_API_URL}/predict`,
+        formData
+      );
       setResult(response.data);
     } catch (err) {
       setError("Prediction failed. Please try again.");
     }
   };
+
 
   const nextStep = () => setStep((prev) => Math.min(prev + 1, totalSteps));
   const prevStep = () => setStep((prev) => Math.max(prev - 1, 1));

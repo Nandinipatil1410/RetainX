@@ -1,7 +1,7 @@
-Flask
-flask-cors
-scikit-learn
-xgboost
-numpy
-pandas
-
+Flask==3.1.1
+flask-cors==6.0.0
+scikit-learn==1.6.1
+xgboost==3.0.2
+pandas==2.2.3
+numpy==2.2.6
+gunicorn

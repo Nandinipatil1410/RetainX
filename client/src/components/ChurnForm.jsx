@@ -70,20 +70,25 @@ function ChurnForm() {
     return true;
   };
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    if (!validateForm()) return;
+const handleSubmit = async (e) => {
+  e.preventDefault();
+  console.log("Form submitted", formData);
+  
+  if (!validateForm()) {
+    console.log("Validation failed");
+    return;
+  }
 
-    try {
-      const response = await axios.post(
-        `${process.env.REACT_APP_API_URL}/predict`,
-        formData
-      );
-      setResult(response.data);
-    } catch (err) {
-      setError("Prediction failed. Please try again.");
-    }
-  };
+  try {
+    const response = await axios.post(`${process.env.REACT_APP_API_URL}/predict`, formData);
+    console.log("API response:", response.data);
+    setResult(response.data);
+  } catch (err) {
+    console.error("API error:", err);
+    setError("Prediction failed. Please try again.");
+  }
+};
+
 
 
   const nextStep = () => setStep((prev) => Math.min(prev + 1, totalSteps));

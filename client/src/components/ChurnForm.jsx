@@ -78,7 +78,7 @@ const handleSubmit = async (e) => {
 
   try {
     const response = await axios.post(
-      "https://retainx-backend.onrender.com",  
+      "https://retainx-backend.onrender.com/predict",  
       formData,
       {
         headers: {

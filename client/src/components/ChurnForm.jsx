@@ -78,7 +78,7 @@ const handleSubmit = async (e) => {
 
   try {
     const response = await axios.post(
-      "https://your-backend-url.onrender.com/predict",  // ✅ Use correct deployed URL
+      "https://retainx-backend.onrender.com",  
       formData,
       {
         headers: {

@@ -5,7 +5,8 @@ from flask_cors import CORS
 import joblib
 
 app = Flask(__name__)
-CORS(app, resources={r"/*": {"origins": "*"}})
+CORS(app, resources={r"/*": {"origins": "https://retainx-f90n.onrender.com"}})
+
 
 # Load the trained model
 model = joblib.load('churn_model.pkl')
@@ -33,6 +34,7 @@ encoder = joblib.load("encoders.pkl")
 @app.route('/predict', methods=['POST'])
 def predict():
     try:
+        
         data = request.get_json()
         print("🔵 Received data:", data)
 
